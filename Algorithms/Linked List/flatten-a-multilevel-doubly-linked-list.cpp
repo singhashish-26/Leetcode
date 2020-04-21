@@ -15,7 +15,8 @@ class Solution {
 public:
     Node* fun(Node* temp)
     {
-        
+        if(temp==NULL)
+            return temp;
         while(temp->next!=NULL && temp->child==NULL)
         {
             temp=temp->next;
@@ -30,7 +31,8 @@ public:
         temp->next=temp->child;
         temp->child=NULL;
         Node* y = fun(temp->next);
-        y->next=x;
+        if(y!=NULL)
+            y->next=x;
         if(x!=NULL)
             x->prev=y;
         temp=x;
@@ -38,8 +40,6 @@ public:
     }
     
     Node* flatten(Node* head) {
-        if(head==NULL)
-            return head;
         Node* temp = head;
         temp = fun(temp);
         temp= head;
