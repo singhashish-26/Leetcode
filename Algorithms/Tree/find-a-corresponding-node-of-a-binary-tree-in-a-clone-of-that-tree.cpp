@@ -9,7 +9,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-
+#iterative approach
 class Solution {
 public:
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
@@ -39,6 +39,30 @@ public:
                 c.pop();
             }
         }
+        return ans;
+    }
+};
+
+#recursive approach
+class Solution {
+public:
+    void find(TreeNode* o, TreeNode* c, TreeNode* t, TreeNode* &ans)
+    {
+        if(!o)
+            return;
+        if(o==t)
+        {
+            ans=c;
+            return;
+        }
+        find(o->left,c->left,t,ans);
+        if(!ans)
+            find(o->right,c->right,t,ans);
+    }
+    
+    TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
+        TreeNode* ans = NULL;
+        find(original,cloned,target,ans);
         return ans;
     }
 };
