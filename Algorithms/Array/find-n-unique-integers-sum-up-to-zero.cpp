@@ -6,26 +6,17 @@ public:
         if(n==1)
             return {0};
         vector<int>ans;
-        if(n%2==0)
-        {
-            int x=n/2;
+        int x=n/2;
             while(x)
             {
                 ans.push_back(x);
                 ans.push_back(-x);
                 --x;
             }
+        if(n%2==0)
             return ans;
-        }
         else
         {
-            int x=n/2;
-            while(x)
-            {
-                ans.push_back(x);
-                ans.push_back(-x);
-                --x;
-            }
             ans.push_back(0);
             return ans;
         }
