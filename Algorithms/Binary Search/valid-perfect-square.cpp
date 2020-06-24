@@ -3,13 +3,20 @@
 class Solution {
 public:
     bool isPerfectSquare(int n) {
-        int i=1;
-        while(n>0)
+        if(n==1)
+            return true;
+        long long int lo=1,hi=n,mid;
+        while(lo+2<=hi)
         {
-            n-=i;
-            i+=2;
+            mid=(lo+hi)/2;
+            if(mid*mid==n)
+                break;
+            if(mid*mid>n)
+                hi=mid;
+            else
+                lo=mid;
         }
-        if(n==0)
+        if(mid*mid==n)
             return true;
         else
             return false;
